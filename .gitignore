@@ -1,0 +1,5 @@
+*/
+*.pdb
+*.config
+*.manifest
+*.vshost.exe
