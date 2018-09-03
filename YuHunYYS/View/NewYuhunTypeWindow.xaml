@@ -1,0 +1,73 @@
+﻿<Window x:Class="YuHunYYS.View.NewYuhunTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YuHunYYS.View"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d"
+                BorderThickness="1"
+        BorderBrush="Silver"
+
+        Title="新增御魂类型" Height="410" Width="320">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FontSize" Value="14.4"/>
+                <Setter Property="Foreground" Value="#FF4D4D4D"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Width" Value="180"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="FontSize" Value="13.3"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel VerticalAlignment="Top" Margin="10,10">
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <TextBlock Text="名字"/>
+                <TextBox Text="{Binding Name}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <TextBlock Text="两件套属性"/>
+                <ComboBox x:Name="shuxingCombo"
+                          SelectedIndex="3"
+                          Width="180"
+                          BorderThickness="1"
+                          Height="40"
+                          SelectedItem="{Binding ShuxingName}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <TextBlock Text="两件套属性加成"/>
+                <TextBox Text="{Binding Val}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <TextBlock Text="颜色"/>
+                <TextBox mahapps:TextBoxHelper.Watermark="R" Text="{Binding ColorR}" Width="50"/>
+                <TextBox mahapps:TextBoxHelper.Watermark="G" Text="{Binding ColorG}" Margin="15,0" Width="50"/>
+                <TextBox mahapps:TextBoxHelper.Watermark="B" Text="{Binding ColorB}" Width="50"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Orientation="Horizontal">
+                <TextBlock Text="御魂描述"/>
+                <TextBox AcceptsReturn="True" AcceptsTab="True"
+                         TextWrapping="Wrap"
+                         Height="80"
+                         Text="{Binding Note}"/>
+            </StackPanel>
+
+        </StackPanel>
+        <Border Height="10" Style="{StaticResource Line}"
+                BorderThickness="0,0,0,1"
+                Margin="0,0,0,75"
+                VerticalAlignment="Bottom"/>
+        <Button Content="确定" BorderThickness="1"
+                Style="{StaticResource AppThemeButtonStyle}"
+                Height="40" Margin="15" VerticalAlignment="Bottom" Click="OKButton"/>
+
+    </Grid>
+</Window>

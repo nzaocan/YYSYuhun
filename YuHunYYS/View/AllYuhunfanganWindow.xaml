@@ -1,0 +1,60 @@
+﻿<Window x:Class="YuHunYYS.AllYuhunfanganWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YuHunYYS"
+                xmlns:mapapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="御魂方案" Height="650" Width="900">
+    <Grid>
+        <Grid.Resources>
+
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Line}"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="70" Content="删除选取" Click="DeleteButtonClick"/>
+        </StackPanel>
+        <DataGrid x:Name="UIDG" AutoGenerateColumns="False"
+                  Grid.Row="1"
+                  CanUserAddRows="False"
+                  ItemsSource="{Binding YuhunFanganList}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="不参与计算" SortMemberPath="IsUsing">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <mapapps:ToggleSwitch IsChecked="{Binding IsUsing,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="名字" IsReadOnly="True" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="四件套" IsReadOnly="True" Binding="{Binding Sijiantao}"/>
+                <DataGridTextColumn Header="目标" IsReadOnly="True" Binding="{Binding Goal}"/>
+                <DataGridTextColumn Header="限制条件" IsReadOnly="True" Binding="{Binding LimitDisplay}"/>
+                <DataGridTemplateColumn IsReadOnly="True" Width="200" Header="结果" SortMemberPath="ResultText">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ResultText}" TextWrapping="Wrap" Margin="0,10" HorizontalAlignment="Left"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="一号位" IsReadOnly="True" Binding="{Binding Yuhuns[0].DisplayWithType}"/>
+                <DataGridTextColumn Header="二号位" IsReadOnly="True" Binding="{Binding Yuhuns[1].DisplayWithType}"/>
+                <DataGridTextColumn Header="三号位" IsReadOnly="True" Binding="{Binding Yuhuns[2].DisplayWithType}"/>
+                <DataGridTextColumn Header="四号位" IsReadOnly="True" Binding="{Binding Yuhuns[3].DisplayWithType}"/>
+                <DataGridTextColumn Header="五号位" IsReadOnly="True" Binding="{Binding Yuhuns[4].DisplayWithType}"/>
+                <DataGridTextColumn Header="六号位" IsReadOnly="True" Binding="{Binding Yuhuns[5].DisplayWithType}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+
+</Window>

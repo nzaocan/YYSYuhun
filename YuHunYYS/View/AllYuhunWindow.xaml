@@ -1,0 +1,67 @@
+﻿<Window x:Class="YuHunYYS.AllYuhunWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YuHunYYS"
+        xmlns:mapapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        BorderThickness="1"
+        WindowStartupLocation="CenterOwner"
+        BorderBrush="Silver"
+        Title="所有御魂" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Line}"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button Width="100" Content="选中项参与计算" Click="using_select_click"/>
+            <Button Width="100" Content="全参与计算" Click="UsingAllClick"/>
+            <Button Width="100" Content="全不参与计算" Click="UsingNoneClick"/>
+            <Border BorderThickness="0,0,1,0" Style="{StaticResource Line}"/>
+            <Button Width="110" Content="新增"
+                    Style="{StaticResource AppThemeButtonStyle}"
+                    Click="NewYuhun"/>
+            <Button Width="110" Content="删除选取"
+                    Style="{StaticResource DeleteButtonStyle}"
+                    Click="DeleteSelectedYuhun"/>
+            <Border BorderThickness="0,0,1,0" Style="{StaticResource Line}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBox Width="160" mapapps:TextBoxHelper.Watermark="搜索"
+                     Margin="5,0" TextChanged="SearchTextChanged"/>
+        </StackPanel>
+        <DataGrid x:Name="UIDG" AutoGenerateColumns="False"
+                  Grid.Row="1"
+                  CanUserAddRows="False"
+                  ItemsSource="{Binding YuhunList}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="删除选取" Click="DeleteSelectedYuhun"/>
+                    <MenuItem Header="选中项参与计算" Click="using_select_click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="参与计算" SortMemberPath="IsUsing">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ToggleButton Style="{StaticResource CheckBoxButton}"
+                                          FontSize="14"
+                                          IsChecked="{Binding IsUsing,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="类型" IsReadOnly="True" Binding="{Binding TypeName}"/>
+                <DataGridTextColumn Header="位置" IsReadOnly="True" Binding="{Binding Weizhi}"/>
+                <DataGridTextColumn Header="主属性" IsReadOnly="True" Binding="{Binding [0].Display,Mode=OneWay}"/>
+                <DataGridTextColumn Header="属性一" IsReadOnly="True" Binding="{Binding [1].Display,Mode=OneWay}"/>
+                <DataGridTextColumn Header="属性二" IsReadOnly="True" Binding="{Binding [2].Display,Mode=OneWay}"/>
+                <DataGridTextColumn Header="属性三" IsReadOnly="True" Binding="{Binding [3].Display,Mode=OneWay}"/>
+                <DataGridTextColumn Header="属性四" IsReadOnly="True" Binding="{Binding [4].Display,Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

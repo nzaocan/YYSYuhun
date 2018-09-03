@@ -1,0 +1,109 @@
+﻿<Window x:Class="YuHunYYS.View.NewYuhunWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YuHunYYS.View"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+                BorderThickness="1"
+        WindowStartupLocation="CenterOwner"
+        BorderBrush="Silver"
+
+        Title="新御魂" Height="440" Width="360">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Line}"/>
+        <Grid Height="45" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="0">
+                <ComboBox Width="120"
+                          FontSize="14"
+                          x:Name="IndexComboBox"
+                          SelectedIndex="{Binding TempYuhun.Index}"
+                          ItemsSource="{Binding IndexStringList}"
+                          HorizontalAlignment="Left" SelectionChanged="IndexComboBox_SelectionChanged">
+                </ComboBox>
+            </StackPanel>
+            <ComboBox Width="140" FontSize="13.3"
+                      x:Name="TypeComboBox"
+                      SelectedItem="{Binding TempYuhun.Type}"
+                      DisplayMemberPath="Name"
+                      ItemsSource="{Binding YuhunTypeList}"
+                      HorizontalAlignment="Right"/>
+        </Grid>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+
+            <StackPanel Margin="0,5" Height="40"
+                        Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Width="160"
+                          x:Name="MainComboBox"
+                          FontSize="13.3"
+                          BorderThickness="1"
+                          Foreground="Blue"
+                          Margin="0,0,30,0"
+                          SelectedItem="{Binding TempYuhun.Shuxings[0].Name}"
+                          SelectionChanged="MainComboBox_SelectionChanged"/>
+
+                <ComboBox Width="120" BorderThickness="1"
+                          ItemsSource="{Binding ElementName=MainComboBox,Path=SelectedItem.OptionalValues}"
+                          x:Name="ValComboBox"
+                          SelectedIndex="0"
+                          SelectedItem="{Binding TempYuhun.Shuxings[0].Val}">
+
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="0,5" Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Width="160"
+                          SelectedItem="{Binding TempYuhun.Shuxings[1].Name}"
+                          BorderThickness="1"
+                          SelectedIndex="0"
+                          Margin="0,0,30,0"
+                          ItemsSource="{Binding ShuxingList}"/>
+                <TextBox Margin="0,0" Width="120" Text="{Binding TempYuhun.Shuxings[1].Val}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Width="160" 
+                          SelectedItem="{Binding TempYuhun.Shuxings[2].Name}"
+                          BorderThickness="1"
+                          SelectedIndex="2"
+                          Margin="0,0,30,0"
+                          ItemsSource="{Binding ShuxingList}"/>
+                <TextBox Margin="0,0" Width="120"
+                         Text="{Binding TempYuhun.Shuxings[2].Val}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Width="160" 
+                          SelectedItem="{Binding TempYuhun.Shuxings[3].Name}"
+                          BorderThickness="1"
+                          SelectedIndex="3"
+                          Margin="0,0,30,0"
+                          ItemsSource="{Binding ShuxingList}"/>
+                <TextBox Margin="0,0" Width="120" Text="{Binding TempYuhun.Shuxings[3].Val}"/>
+            </StackPanel>
+            <StackPanel Margin="0,5" Height="40" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Width="160"
+                          SelectedItem="{Binding TempYuhun.Shuxings[4].Name}"
+                          BorderThickness="1"
+                          SelectedIndex="1"
+                          Margin="0,0,30,0"
+                          ItemsSource="{Binding ShuxingList}"/>
+                <TextBox Margin="0,0" Width="120" Text="{Binding TempYuhun.Shuxings[4].Val}"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Button Content="确定" Height="40"
+                    Style="{StaticResource AppThemeButtonStyle}"
+                    Margin="20,0" BorderThickness="1" VerticalAlignment="Top" Click="OKButton"/>
+            <StackPanel Margin="10" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock FontSize="13.3" Margin="10,0" Text="两件套属性:" />
+                <TextBlock FontSize="13.3" Text="{Binding ElementName=TypeComboBox,Path=SelectedItem.ShuxingName}"/>
+                <TextBlock FontSize="13.3" Text="{Binding ElementName=TypeComboBox,Path=SelectedItem.Val}"/>
+                <TextBlock FontSize="13.3" Text="%"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<Window x:Class="YuHunYYS.AllYuhunTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YuHunYYS"
+        mc:Ignorable="d"
+        BorderThickness="1"
+        WindowStartupLocation="CenterOwner"
+        BorderBrush="Silver"
+
+        Title="所有御魂类型" Height="450" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Line}"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="70" Content="新增" Click="NewYuhunType"/>
+            <Button Width="70" Content="删除选取" Click="DeleteSelectedYuhunType"/>
+        </StackPanel>
+        <DataGrid x:Name="UIDG" AutoGenerateColumns="True"
+                  Grid.Row="1"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  ItemsSource="{Binding YuhunTypeList}">
+        </DataGrid>
+    </Grid>
+
+</Window>
