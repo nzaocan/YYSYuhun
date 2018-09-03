@@ -1,6 +1,8 @@
 # YYSYuhun
 游戏`<font color="blue">阴阳师</font>`用于计算御魂方案计算工具，基于动态规划和剪枝
 
+浅红色文字：<font color="#dd0000">浅红色文字：</font>
+
 ![主页](https://github.com/nzaocan/YYSYuhun/blob/master/ScreenShot/mainpage.png)
 ![计算等待](https://github.com/nzaocan/YYSYuhun/blob/master/ScreenShot/process.png)
 ![四件套](https://github.com/nzaocan/YYSYuhun/blob/master/ScreenShot/sj.png)
