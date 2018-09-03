@@ -1,7 +1,7 @@
 # YYSYuhun
 游戏`
 ```html
-<font color='red'>阴阳师</font>
+<p color='red'>阴阳师</p>
 ```
 `用于计算御魂方案计算工具，基于动态规划和剪枝
 
