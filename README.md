@@ -1,5 +1,5 @@
 # YYSYuhun
-游戏`<font color="blue">阴阳师</font>`用于计算御魂方案计算工具，基于动态规划和剪枝
+游戏`![#1589F0](https://placehold.it/15/1589F0/000000?text=+)阴阳师`用于计算御魂方案计算工具，基于动态规划和剪枝
 
 浅红色文字：<font color="#ff0022">浅红色文字：</font>
 
